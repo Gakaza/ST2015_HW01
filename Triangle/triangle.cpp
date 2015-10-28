@@ -41,6 +41,7 @@ void triangleType(bool isTriangle, int a, int b, int c) {
 		cout << "Not a Triangle" << endl;
 }
 
+/*
 int main() {
 	int sideA, sideB, sideC;
 	bool isTriangle;
@@ -55,3 +56,4 @@ int main() {
 	system("PAUSE");
 	return 0;
 }
+*/

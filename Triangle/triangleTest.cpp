@@ -1,5 +1,5 @@
-#include "triangle.h"
-#include "gtest-1.7.0\include\gtest\gtest.h"
+#include "triangle.cpp"
+#include <gtest/gtest.h>
 
 //Boundary Value Test: go through various of normal boundary value test cases (chapter 5 slide 19)
 //and some extreme test cases
@@ -21,23 +21,23 @@ TEST(TriangleBoundaryTEST, TriangleCheck) {
 
 TEST(TriangleBoundaryTEST, ScaleneTest) {
 	//Scalene
-	EXPECT_STREQ("Scalene", triangleType(100, 95, 98));
-	EXPECT_STREQ("Scalene", triangleType(100, 70, 50));
-	EXPECT_STREQ("Scalene", triangleType(4, 3, 5));
+	EXPECT_STREQ("Scalene", triangleType(1, 100, 95, 98));
+	EXPECT_STREQ("Scalene", triangleType(1, 100, 70, 50));
+	EXPECT_STREQ("Scalene", triangleType(1, 4, 3, 5));
 }
 
 TEST(TriangleBoundaryTEST, IsosecelesTest) {
 	//Isoseceles
-	EXPECT_STREQ("Isoseceles", triangleType(100, 100, 1));
-	EXPECT_STREQ("Isoseceles", triangleType(100, 100, 2));
-	EXPECT_STREQ("Isoseceles", triangleType(1, 2, 2));
-	EXPECT_STREQ("Isoseceles", triangleType(2, 1, 2));
+	EXPECT_STREQ("Isoseceles", triangleType(1, 100, 100, 1));
+	EXPECT_STREQ("Isoseceles", triangleType(1, 100, 100, 2));
+	EXPECT_STREQ("Isoseceles", triangleType(1, 1, 2, 2));
+	EXPECT_STREQ("Isoseceles", triangleType(1, 2, 1, 2));
 }
 
 TEST(TriangleBoundaryTEST, EquilateralTest) {
 	//Equilateral
-	EXPECT_STREQ("Equilateral", triangleType(1, 1, 1));
-	EXPECT_STREQ("Equilateral", triangleType(65535, 65535, 65535));
+	EXPECT_STREQ("Equilateral", triangleType(1, 1, 1, 1));
+	EXPECT_STREQ("Equilateral", triangleType(1, 65535, 65535, 65535));
 }
 
 //Equivalence Class Testing: test one case per class
@@ -59,9 +59,9 @@ TEST(TriangleEqTEST, OutOfRangeEqTest) {
 }
 
 TEST(TriangleEqTEST, TypeTriangleEqTest) {
-	EXPECT_STREQ("Equilateral", triangleType(1, 1, 1)); //Equilateral
-	EXPECT_STREQ("Isoseceles", triangleType(100, 100, 1));	//Isoseceles
-	EXPECT_STREQ("Scalene", triangleType(100, 95, 98)); //Scalene
+	EXPECT_STREQ("Equilateral", triangleType(1, 1, 1, 1)); //Equilateral
+	EXPECT_STREQ("Isoseceles", triangleType(1, 100, 100, 1));	//Isoseceles
+	EXPECT_STREQ("Scalene", triangleType(1, 100, 95, 98)); //Scalene
 }
 
 //Edge Value: hybrid of Eq. class and boundary testing
