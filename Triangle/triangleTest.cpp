@@ -1,6 +1,9 @@
 #include "triangle.cpp"
 #include <gtest/gtest.h>
+#include <iostream>
+ostringstream output;
 
+//http://stackoverflow.com/questions/18908923/unit-test-using-gtest-1-6-how-to-check-what-is-printed-out
 //Boundary Value Test: go through various of normal boundary value test cases (chapter 5 slide 19)
 //and some extreme test cases
 TEST(TriangleBoundaryTEST, TriangleCheck) {
@@ -21,23 +24,23 @@ TEST(TriangleBoundaryTEST, TriangleCheck) {
 
 TEST(TriangleBoundaryTEST, ScaleneTest) {
 	//Scalene
-	EXPECT_STREQ("Scalene", triangleType(1, 100, 95, 98));
-	EXPECT_STREQ("Scalene", triangleType(1, 100, 70, 50));
-	EXPECT_STREQ("Scalene", triangleType(1, 4, 3, 5));
+	EXPECT_STREQ("Scalene", triangleType(output, true, 100, 95, 98)); //problem with the void print function...
+	EXPECT_STREQ("Scalene", triangleType(output, true, 100, 70, 50));
+	EXPECT_STREQ("Scalene", triangleType(output, true, 4, 3, 5));
 }
 
 TEST(TriangleBoundaryTEST, IsosecelesTest) {
 	//Isoseceles
-	EXPECT_STREQ("Isoseceles", triangleType(1, 100, 100, 1));
-	EXPECT_STREQ("Isoseceles", triangleType(1, 100, 100, 2));
-	EXPECT_STREQ("Isoseceles", triangleType(1, 1, 2, 2));
-	EXPECT_STREQ("Isoseceles", triangleType(1, 2, 1, 2));
+	EXPECT_STREQ("Isoseceles", triangleType(true, 100, 100, 1));
+	EXPECT_STREQ("Isoseceles", triangleType(true, 100, 100, 2));
+	EXPECT_STREQ("Isoseceles", triangleType(true, 1, 2, 2));
+	EXPECT_STREQ("Isoseceles", triangleType(true, 2, 1, 2));
 }
 
 TEST(TriangleBoundaryTEST, EquilateralTest) {
 	//Equilateral
-	EXPECT_STREQ("Equilateral", triangleType(1, 1, 1, 1));
-	EXPECT_STREQ("Equilateral", triangleType(1, 65535, 65535, 65535));
+	EXPECT_STREQ("Equilateral", triangleType(true, 1, 1, 1));
+	EXPECT_STREQ("Equilateral", triangleType(true, 65535, 65535, 65535));
 }
 
 //Equivalence Class Testing: test one case per class
@@ -59,9 +62,9 @@ TEST(TriangleEqTEST, OutOfRangeEqTest) {
 }
 
 TEST(TriangleEqTEST, TypeTriangleEqTest) {
-	EXPECT_STREQ("Equilateral", triangleType(1, 1, 1, 1)); //Equilateral
-	EXPECT_STREQ("Isoseceles", triangleType(1, 100, 100, 1));	//Isoseceles
-	EXPECT_STREQ("Scalene", triangleType(1, 100, 95, 98)); //Scalene
+	EXPECT_STREQ("Equilateral", triangleType(true, 1, 1, 1)); //Equilateral
+	EXPECT_STREQ("Isoseceles", triangleType(true, 100, 100, 1));	//Isoseceles
+	EXPECT_STREQ("Scalene", triangleType(true, 100, 95, 98)); //Scalene
 }
 
 //Edge Value: hybrid of Eq. class and boundary testing
@@ -100,3 +103,9 @@ TEST(TriangleEdgeTEST, OutOfRangeEDTest) {
 //Decision Table Based
 
 
+
+
+int main(int argc, char** argv) {
+  testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}

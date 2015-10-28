@@ -27,18 +27,18 @@ bool isTriangleCheck(int a, int b, int c) {
 		return false;
 }
 
-void triangleType(bool isTriangle, int a, int b, int c) {
+void triangleType(std::ostream &os, bool isTriangleCheck, int a, int b, int c) {
 
-	if (isTriangle) {
+	if (isTriangleCheck) {
 		if ((a == b) && (b == c))
-			cout << "Equilateral" << endl;
+			os << "Equilateral" << endl;
 		else if ((a != b) && (b != c) && (a != c))
-			cout << "Scalene" << endl;
+			os << "Scalene" << endl;
 		else
-			cout << "Isoscelese" << endl;
+			os << "Isoscelese" << endl;
 	}
 	else
-		cout << "Not a Triangle" << endl;
+		os << "Not a Triangle" << endl;
 }
 
 /*
