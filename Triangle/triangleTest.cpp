@@ -28,7 +28,7 @@ TEST(TriangleBoundaryTEST, TriangleCheck) {
 	EXPECT_FALSE(isTriangleCheck(201, 201, 1));
 	EXPECT_FALSE(isTriangleCheck(201, 201, 201));
 	EXPECT_FALSE(isTriangleCheck(201, 201, 1));
-	EXPECT_FALSE(isTriangleCheck(65535, 201, 1));
+	EXPECT_FALSE(isTriangleCheck(65535, 201, 300));
 }
 
 //(Eq, Scal, Iso) => (1, 2, 3)
