@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/gakaza/ST2015_HW01/testing/tests.cpp
+whattotest.cpp
+/home/gakaza/ST2015_HW01/testing/whattotest.cpp
+gtest/gtest.h
+-
+
+/home/gakaza/ST2015_HW01/testing/whattotest.cpp
+math.h
+-
+
