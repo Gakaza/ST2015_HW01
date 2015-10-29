@@ -18,6 +18,7 @@ Goal:
 */
 
 #include<iostream>
+
 using namespace std;
 
 
@@ -34,6 +35,7 @@ bool leapYear(int year) {
 void day31(int day, int month, int year, int &nextDay, int &nextMonth, int &nextYear) {
 	if (day < 31) {
 		nextDay = day++;
+		nextMonth = month;
 	}
 	else {
 		nextDay = 1;
@@ -44,6 +46,7 @@ void day31(int day, int month, int year, int &nextDay, int &nextMonth, int &next
 void day30(int day, int month, int year, int &nextDay, int &nextMonth, int &nextYear) {
 	if (day < 31) {
 		nextDay = day++;
+		nextMonth = month;
 	}
 	else {
 		nextDay = 1;
@@ -54,25 +57,28 @@ void day30(int day, int month, int year, int &nextDay, int &nextMonth, int &next
 void dayDec(int day, int month, int year, int &nextDay, int &nextMonth, int &nextYear) {
 	if (day < 31) {
 		nextDay = day++;
-		nextYear = year;
+		nextMonth = month;
 	}
 	else {
 		nextDay = 1;
-		nextMonth = 1;
-		nextYear = year++;
+		nextMonth = 1;	
 	}
+	nextYear = year;
 }
-void dayFeb(int day, int month, int year, int &nextDay, int &nextMonth, int &nextYear, bool isDate) {
+void dayFeb(int day, int month, int year, int &nextDay, int &nextMonth, int &nextYear) {
+	nextYear = year;
 	if (day < 28) {
 		nextDay = day++;
+		nextMonth = month;
 	}
 	else if (day == 28) {
 		if (leapYear(year)) {
 			nextDay = 29;
+			nextMonth = month;
 		}
 		else {
 			nextDay = 1;
-			nextMonth = 3;
+			nextMonth = 3;			
 		}
 	}
 	else if (day == 29) {
@@ -82,32 +88,41 @@ void dayFeb(int day, int month, int year, int &nextDay, int &nextMonth, int &nex
 		}
 		else {
 			cout << "Cannot have Feb. " << day << endl;
-			isDate = false;
+			nextMonth = month;
+			//system("PAUSE");
+			return;
 		}
 	}
+	
 }
 int main() {
 	int day, month, year;
 	int nextDay, nextMonth, nextYear; //the date, one day after the entered date
-	bool isDate = true; //does this date exist?
+	bool isDate; //does this date exist?
 	cout << "Please enter the date, month, and year (MM DD YY): ";
 	cin >> day >> month >> year;
-
+	if(day <= 31 && day > 0 && month > 0 && month < 13)
+		isDate = true;
+	else
+		isDate = false;
+	
 	//Four cases: day with 31 days, day with 30 days, Decemeber, and Feburary.
-	if(month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10) {
-		day31(day, month, year, nextDay, nextMonth, nextYear);
+	if(isDate){
+		if(month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10) {
+			day31(day, month, year, nextDay, nextMonth, nextYear);
+		}
+		else if(month == 4 || month == 6 || month == 9 || month == 11) {
+			day30(day, month, year, nextDay, nextMonth, nextYear);
+		}
+		else if(month == 12) {
+			dayDec(day, month, year, nextDay, nextMonth, nextYear);
+		}
+		else if(month == 2) {
+			dayFeb(day, month, year, nextDay, nextMonth, nextYear);
+		}
+		cout << "The next date is: " << nextDay << " " << nextMonth << " " << nextYear << endl;
 	}
-	else if(month == 4 || month == 6 || month == 9 || month == 11) {
-		day30(day, month, year, nextDay, nextMonth, nextYear);
-	}
-	else if(month == 12) {
-		dayDec(day, month, year, nextDay, nextMonth, nextYear);
-	}
-	else if(month == 2) {
-		dayFeb(day, month, year, nextDay, nextMonth, nextYear, isDate);
-	}
-
-	cout << "The next date is: " << nextDay << " " << nextMonth << " " << nextYear << endl;
-	system("PAUSE");
+	//system("PAUSE");
 	return 0;
 }
+
