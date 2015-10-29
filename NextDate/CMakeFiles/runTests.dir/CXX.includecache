@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/gakaza/ST2015_HW01/NextDate/NextDate.cpp
+iostream
+-
+sstream
+-
+string
+-
+
+/home/gakaza/ST2015_HW01/NextDate/NextDateTest.cpp
+NextDate.cpp
+/home/gakaza/ST2015_HW01/NextDate/NextDate.cpp
+gtest/gtest.h
+-
+iostream
+-
+sstream
+-
+
