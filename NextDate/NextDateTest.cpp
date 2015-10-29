@@ -290,6 +290,10 @@ TEST(NextDateDecisionTEST, DecisionTest) {
 	EXPECT_EQ(1, monthHandle(31, 12, 2015));
 	EXPECT_EQ(2016, yearHandle(31, 12, 2015));
 	
+	EXPECT_EQ(-1, dayHandle(31, 4, 2015));
+	EXPECT_EQ(-1, monthHandle(31, 4, 2015));
+	EXPECT_EQ(-1, yearHandle(31, 4, 2015));
+	
 	EXPECT_EQ(16, dayHandle(15, 2, 2001));
 	EXPECT_EQ(2, monthHandle(15, 2, 2001));
 	EXPECT_EQ(2001, yearHandle(15, 2, 2001));
