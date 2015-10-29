@@ -27,23 +27,29 @@ bool isTriangleCheck(int a, int b, int c) {
 		return false;
 }
 
-void triangleType(std::ostream &os, bool isTriangleCheck, int a, int b, int c) {
+int triangleType(bool isTriangleCheck, int a, int b, int c) {
 
 	if (isTriangleCheck) {
-		if ((a == b) && (b == c))
-			os << "Equilateral" << endl;
-		else if ((a != b) && (b != c) && (a != c))
-			os << "Scalene" << endl;
-		else
-			os << "Isoscelese" << endl;
+		if ((a == b) && (b == c)){
+			cout << "Equilateral" << endl;
+			return 1;
+		}else if ((a != b) && (b != c) && (a != c)){
+			cout << "Scalene" << endl;
+			return 2;
+		}else{
+			cout << "Isoscelese" << endl;
+			return 3;
+		}
 	}
-	else
-		os << "Not a Triangle" << endl;
+	else{
+		
+		return 0;
+	}
 }
 
 /*
-int main() {
-	int sideA, sideB, sideC;
+int main(){
+	int sideA, sideB, sideC, triangle;
 	bool isTriangle;
 
 	//Input the three sides of a triangle
@@ -52,8 +58,12 @@ int main() {
 	cout << "\nThe three sides are: " << sideA << " " << sideB << " " << sideC << endl;
 		
 	isTriangle = isTriangleCheck(sideA, sideB, sideC); //Determine whether this is a triangle or not	
-	triangleType(isTriangle, sideA, sideB, sideC); //Determine the type of the triangle
-	system("PAUSE");
+	triangle = triangleType(isTriangle, sideA, sideB, sideC); //Determine the type of the triangle
+	if(!triangle)
+		cout << "Not a Triangle" << endl;
+	cout<<"Press any key to continue"<<endl;
+	cin.ignore().get();
 	return 0;
 }
+
 */

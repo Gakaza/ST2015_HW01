@@ -1,0 +1,1 @@
+/home/gakaza/ST2015_HW01/Triangle/CMakeFiles/runTests.dir

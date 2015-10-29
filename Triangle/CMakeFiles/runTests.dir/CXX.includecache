@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/gakaza/ST2015_HW01/Triangle/triangle.cpp
+iostream
+-
+
+/home/gakaza/ST2015_HW01/Triangle/triangleTest.cpp
+triangle.cpp
+/home/gakaza/ST2015_HW01/Triangle/triangle.cpp
+gtest/gtest.h
+-
+iostream
+-
+
